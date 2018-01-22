@@ -114,7 +114,7 @@ Contents
 
 [Using Visual Basic ](#using-visual-basic)
 
-[Downloading from the Internet 60](#downloading-from-the-internet)
+[Downloading from the Internet](#downloading-from-the-internet)
 
 [Downloading from Google Finance via Excel's Web Query
 ](#downloading-from-google-finance-via-excels-web-query)
