@@ -2154,8 +2154,8 @@ Apr-2016</td><td>1900333</td></tr><tr><td>Stock D</td><td>3.44</td><td>01-Oct-20
 So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
 search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. 
 There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do 
-is, from the string “Stock D” read forward for the next three strings of the form <td>. Once you’ve done that you should be at the 
-start of the volume figure and then just keep reading data  up until the next </td> string. It sounds a bit more complicated than it
+is, from the string “Stock D” read forward for the next three strings of the form \<td>. Once you’ve done that you should be at the 
+start of the volume figure and then just keep reading data  up until the next <<//td> string. It sounds a bit more complicated than it
 actually is.  Below is an example of the type of code we would need.
 
 ***listing 5.4***
