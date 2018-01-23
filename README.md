@@ -1103,7 +1103,8 @@ server to our PC. The code is shown below.
 
 ```
 echo on
-rem                                                                                             rem our file has todays date in YYYYMMDD format as its extension                          
+rem                                                                                             
+rem our file has todays date in YYYYMMDD format as its extension                          
 rem 
 set mydate=%date:~-4,4%%date:~-7,2%%date:~-10,2%
 set input_file=7amspots.%mydate%
@@ -1115,9 +1116,11 @@ cd c:\blp\bbdl\rb5.0
 del c:\gm\gm_fx7_load.txt
 del %input_file%
 rem  The code below FTP’s the data from the Bloomberg server to the                 
-rem  local PC and decrypts it at the same time                                              rem  c:\blp\bbdl\rb5.0\jre\bin\java -jar c:\blp\bbdl\rb5.0\bbdl.jar -prog=ftp retrieve 
+rem  local PC and decrypts it at the same time                                              
+rem  c:\blp\bbdl\rb5.0\jre\bin\java -jar c:\blp\bbdl\rb5.0\bbdl.jar -prog=ftp retrieve 
 rem %input_file% label=GM_FTP autodecrypt
-rem check we got the file OK, error if not                                                  rem
+rem check we got the file OK, error if not                                                  
+rem
 if not exist %input_file% goto no_input
 copy %input_file% c:\gm\%load_file%
 cd c:\gm
@@ -1125,12 +1128,16 @@ del gm_fx7.bad
 del gm_fx7.log
 del gm_fx7.out
 if not exist %load_file% goto no_load
-rem   load the file into a staging table in the ORACLE database                             rem 
+rem   load the file into a staging table in the ORACLE database                             
+rem 
 sqlldr myuser/mypass@mydb control=gm_fx7.ctl log=gm_fx7.log bad=gm_fx7.bad
-rem                                                                                         rem check loading for errors                                                                rem 
+rem                                                                                         
+rem check loading for errors                                                                
+rem 
 if exist gm_fx7.bad goto badfile
 rem                                                                                     
-rem   final processing of the data from stage table to final table                          rem
+rem   final processing of the data from stage table to final table                          
+rem
 sqlplus myuser/mypass@mydb  @gm_fx.sql > gm_fx7.out
 exit
 
