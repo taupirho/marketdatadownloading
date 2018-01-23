@@ -2142,28 +2142,20 @@ So let’s say we wanted to capture this information and display it in Excel. Th
 can find the price date, name and volume there. In fact we can and here is a snippet of the relevant section. 
 
 ```
-\<table width=\"650px\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\"
-class=\"SharePriceInfoHeader\"\>\<tr\>\<td\>\<span
-style=\"color:\#333333;\"\>[Share Price:\</span\>
-2.025\</td\>\<td\>\<span style=\"color:\#333333;\"\>Bid:\</span\>
-1.95\</td\>\<td\>\<span style=\"color:\#333333;\"\>Ask:\</span\>
-2.10\</td\>\<td\>\<span]{.underline}
-style=\"color:\#333333;\"\>Change:\</span\> \<span
-style=\"color:\#0066CC;\"\>0.25 (+11.76%)\</span\>\</td\>\<td
-width=\"28\"\>\<img width=\"32\" height=\"32\"
-src=\"http://static.lse.co.uk/images/share-arrows/UpMovement\_32.png\"
-alt=\"Riser - African Potash\" hspace=\"0\" vspace=\"0\"
-/\>\</td\>\</tr\>\<tr\>\<td colspan=\"5\"\>\<table width=\"100%\"
-cellpadding=\"1\" cellspacing=\"0\" border=\"0\"
-class=\"SharePriceInfoMini\"\>\<tr\>\<td\>\<span
-style=\"color:\#333333;\"\>Spread:\</span\> 0.05\</td\>\<td\>\<span
+<td>Stock Name</td><td>Price</td><td>Price Date</td><td>Volume</td></tr><tr><td>Stock A</td><td>12.90</td><td>01-Apr-2017</td>
+<td>234,000</td></tr><tr><td>Stock B</td><td>0.09</td><td>24-Mar-2016</td><td>10000</td></tr><tr><td>Stock C</td><td>89.0</td><td>30-
+Apr-2016</td><td>1900333</td></tr><tr><td>Stock D</td><td>3.44</td><td>01-Oct-2011</td><td>984556</td></tr><tr><td>Stock E</td>
+<td>104.89</td><td>01-Dec-2012</td><td>7422</td></tr><tr><td>Stock F</td><td>23.66</td><td>01-Apr-2017</td><td>295558</td></tr><tr>
+<td>Stock G</td><td>34444</td><td>10-Jun-2013</td><td>5778</td></tr><tr><td>Stock H</td><td>100</td><td>06-Dec-2013</td><td>100</td>
+</tr><tr><td>Stock I</td><td>33</td><td>05-May-2013</td><td>7855589</td></tr><tr><td>Stock J</td><td>9</td><td>16-sep-1999</td>
+<td>4444</td></tr></tbody></table><p><br></p></div> </div>
 ```
 
 So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
 search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. 
 There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do 
-is, from the string “Stock D” read forward for the next three strings of the form “<td>”. Once you’ve done that you should be at the 
-start of the volume figure and then just keep reading data  up until the next “</td>” string. It sounds a bit more complicated than it
+is, from the string “Stock D” read forward for the next three strings of the form <td>. Once you’ve done that you should be at the 
+start of the volume figure and then just keep reading data  up until the next </td> string. It sounds a bit more complicated than it
 actually is.  Below is an example of the type of code we would need.
 
 ***listing 5.4***
