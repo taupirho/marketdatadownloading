@@ -407,6 +407,16 @@ to row 101. The first few lines are shown below. The LN part of each ticker
 name in column B indicates that these shares are listed in London.
 
 
+**figure 2.3**
+
+      A        B   C   D   E
+      1   AAL LN               
+      2   ABF LN               
+      3   ADM LN               
+      4   ADN LN               
+      5   AGK LN               
+
+
 **NB. *The optional arguments of the BDS function need not concern us at
 this time but are used to enable you to do things like define the
 orientation of the result set -- either vertical or horizontal -, the
