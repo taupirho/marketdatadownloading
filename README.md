@@ -6,7 +6,7 @@ Bloomberg, Reuters, Markit and the Internet using **mostly** Excel and VBA
 Tom Reid
 
 DISCLAIMER: 
-------------
+-----------
 
 This eBook and its contents is provided on an **"as is"** basis and no
 representations or warranties are made of any kind with respect to its
@@ -18,7 +18,7 @@ errors or omissions, whether such errors or omissions result from
 accident, negligence, or any other cause.
 
 TRADEMARKS: 
-------------
+-----------
 
 All brand and product names used in this eBook are trademarks or registered trademarks of their respective owners. The author is not associated with any vendor, web-site or product mentioned in this eBook.
 
@@ -47,7 +47,7 @@ Contents
 
 [DISCLAIMER](#disclaimer)
 
-[TRADEMARKS](#_Toc433280896)
+[TRADEMARKS](#trademarks)
 
 [AUTHOR'S NOTE](#authors-note)
 
