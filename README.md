@@ -43,8 +43,6 @@ Dedicated to my wife and children
 Contents 
 ========
 
-[Copyright](#copyright)
-
 [DISCLAIMER](#disclaimer)
 
 [TRADEMARKS](#_Toc433280896)
