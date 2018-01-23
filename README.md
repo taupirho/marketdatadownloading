@@ -1716,10 +1716,10 @@ Downloading data from Yahoo finance
 The secret to getting data from Yahoo finance is in the URL you supply
 to it. One of the commonest formats is shown below.
 
-**http://finance.yahoo.com/d/quotes.csv?s= *symbols*&f=*flags**
+http://finance.yahoo.com/d/quotes.csv?s= *symbols*&f=flags
 
-Where ***symbols*** is a + separated list of company tickers and
-***flags*** that tells yahoo what data you want to return for each
+Where ***symbols*** is a '+' separated list of company tickers that you want information
+on and **flags** are codes that tell yahoo what data you want to return for each
 company. A list of the common flags are shown below.
 
 ***figure 5.2***
