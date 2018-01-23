@@ -17,7 +17,9 @@ liability to any party for any loss, damage, or disruption caused by
 errors or omissions, whether such errors or omissions result from
 accident, negligence, or any other cause.
 
-**TRADEMARKS:** 
+TRADEMARKS: 
+------------
+
 All brand and product names used in this eBook are trademarks or registered trademarks of their respective owners. The author is not associated with any vendor, web-site or product mentioned in this eBook.
 
 AUTHOR'S NOTE:
