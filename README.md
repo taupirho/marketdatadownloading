@@ -2138,7 +2138,28 @@ figure 5.6
  
   ![](https://github.com/taupirho/marketdatadownloading/blob/master/image9.png "Image of a list of stock/prices")
   
-So let’s say we wanted to capture this information and display it in Excel. The first thing to do is look at the source and see if we can find the price date, name and volume there. In fact we can and here is a snippet of the relevant section. So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
+So let’s say we wanted to capture this information and display it in Excel. The first thing to do is look at the source and see if we 
+can find the price date, name and volume there. In fact we can and here is a snippet of the relevant section. 
+
+```
+\<table width=\"650px\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\"
+class=\"SharePriceInfoHeader\"\>\<tr\>\<td\>\<span
+style=\"color:\#333333;\"\>[Share Price:\</span\>
+2.025\</td\>\<td\>\<span style=\"color:\#333333;\"\>Bid:\</span\>
+1.95\</td\>\<td\>\<span style=\"color:\#333333;\"\>Ask:\</span\>
+2.10\</td\>\<td\>\<span]{.underline}
+style=\"color:\#333333;\"\>Change:\</span\> \<span
+style=\"color:\#0066CC;\"\>0.25 (+11.76%)\</span\>\</td\>\<td
+width=\"28\"\>\<img width=\"32\" height=\"32\"
+src=\"http://static.lse.co.uk/images/share-arrows/UpMovement\_32.png\"
+alt=\"Riser - African Potash\" hspace=\"0\" vspace=\"0\"
+/\>\</td\>\</tr\>\<tr\>\<td colspan=\"5\"\>\<table width=\"100%\"
+cellpadding=\"1\" cellspacing=\"0\" border=\"0\"
+class=\"SharePriceInfoMini\"\>\<tr\>\<td\>\<span
+style=\"color:\#333333;\"\>Spread:\</span\> 0.05\</td\>\<td\>\<span
+```
+
+So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
 search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. 
 There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do 
 is, from the string “Stock D” read forward for the next three strings of the form “<td>”. Once you’ve done that you should be at the 
