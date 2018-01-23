@@ -2127,7 +2127,7 @@ thing to check is how the data is rendered on the page. For that you need to exa
 option to do this. For instance under Chrome and Internet Explorer you simply right click on the web page and take the View Source 
 option that displays in the mini menu that pops up. Now look at the source data and see if you can pick out from that the data you are 
 interested in. If you can then you ought to be able to grab it using VBA. For this example I will consider  a simple test page that I 
-set up on my own web-site. You can see the page by following the link to  www.elmama.co.uk/stock_prices.html. The page is shown below 
+set up on my own web-site. You can see the page by following the link to www.elmama.co.uk/stock_prices.html. The page is shown below 
 and, as you can see, it’s just a list of ten dummy stocks, showing their name, price, price date and volume of shares traded on the 
 price date.
 
@@ -2138,24 +2138,7 @@ figure 5.6
  
   ![](https://github.com/taupirho/marketdatadownloading/blob/master/image9.png "Image of a list of stock/prices")
   
-So let’s say we wanted to capture this information and display it in Excel. The first thing to do is look at the source and see if we can find the price date, name and volume there. In fact we can and here is a snippet of the relevant section. 
-
-<table border="1" align="right" cellspacing="1" cellpadding="1" style="height: 500px; width: 600px;
-"><tbody><tr><td>Stock Name</td><td>Price</td><td>Price Date</td><td>Volume</td></tr>
-<tr><td>Stock A</td><td>12.90</td><td>01-Apr-2017</td><td>234,000</td></tr>
-<tr><td>Stock B</td><td>0.09</td><td>24-Mar-2016</td><td>10000</td></tr>
-<tr><td>Stock C</td><td>89.0</td><td>30-Apr-2016</td><td>1900333</td></tr>
-<tr><td>Stock D</td><td>3.44</td><td>01-Oct-2011</td><td>984556</td></tr>
-<tr><td>Stock E</td><td>104.89</td><td>01-Dec-2012</td><td>7422</td></tr>
-<tr><td>Stock F</td><td>23.66</td><td>01-Apr-2017</td><td>295558</td></tr>
-<tr><td>Stock G</td><td>34444</td><td>10-Jun-2013</td><td>5778</td></tr>
-<tr><td>Stock H</td><td>100</td><td>06-Dec-2013</td><td>100</td></tr>
-<tr><td>Stock I</td><td>33</td><td>05-May-2013</td><td>7855589</td></tr>
-<tr><td>Stock J</td><td>9</td><td>16-sep-1999</td><td>4444</td></tr></tbody>
-</table>
-
-
-So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
+So let’s say we wanted to capture this information and display it in Excel. The first thing to do is look at the source and see if we can find the price date, name and volume there. In fact we can and here is a snippet of the relevant section. So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
 search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. 
 There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do 
 is, from the string “Stock D” read forward for the next three strings of the form “<td>”. Once you’ve done that you should be at the 
