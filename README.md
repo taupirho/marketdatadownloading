@@ -2015,44 +2015,78 @@ Running the above code in R will result in a graph similar to the one shown belo
 figure 5.5
 ![](https://github.com/taupirho/marketdatadownloading/blob/master/image8.png "R Graph")
 
-Incidentally, the big apparent drop in the price in the middle of  2014 was caused by a 7 for 1 stock split.  If we look at the code listing again, although the syntax might be unfamiliar, I’m hoping you get the general idea of what it’s doing.
+Incidentally, the big apparent drop in the price in the middle of  2014 was caused by a 7 for 1 stock split.  If we look 
+at the code listing again, although the syntax might be unfamiliar, I’m hoping you get the general idea of what it’s doing.
 
 Lines 1 - 2
-We have two install commands which do what you’d expect in that they make available to R packages which contain enhanced connectivity and utilities outside its core functionality.  In this respect they are much like a JAVA import or C #include directive for those of you familiar with those languages. 
+We have two install commands which do what you’d expect in that they make available to R packages which contain enhanced connectivity 
+and utilities outside its core functionality.  In this respect they are much like a JAVA import or C #include directive for those of 
+you familiar with those languages. 
+
 Lines 3 - 4
 The library keyword attaches the contents of the packages to the current run-time R environment.
+
 Line 5
-This is where you tell Quandl what your API key is. Obviously you would substitute your own actual key value for the placeholder value shown in the listing. 
+This is where you tell Quandl what your API key is. Obviously you would substitute your own actual key value for the placeholder value 
+shown in the listing. 
+
 Line 6
-This is the actual call to get the stock price data from Quandl. We pass in the database/ticker symbol which uniquely identifies the stock to Quandl, we state that we want the data to start on the 1st  January 2013. Since we don’t specify an end date we will get everything from the start date onwards. The final ‘c’ parameter tells Quandl that we only want certain (c)olumns returned - namely the Date and Close price. We assign the whole data set that’s returned to a variable called stock_aapl. If at this stage we had simply printed out this variable by typing show(stock_aapl) into R we just see two columns of data displayed. With data like this though it’s preferable to see a graph of it which is what the final line of code does.
+This is the actual call to get the stock price data from Quandl. We pass in the database/ticker symbol which uniquely identifies the 
+stock to Quandl, we state that we want the data to start on the 1st  January 2013. Since we don’t specify an end date we will get 
+everything from the start date onwards. The final ‘c’ parameter tells Quandl that we only want certain (c)olumns returned - namely the 
+Date and Close price. We assign the whole data set that’s returned to a variable called stock_aapl. If at this stage we had simply 
+printed out this variable by typing show(stock_aapl) into R we just see two columns of data displayed. With data like this though it’s 
+preferable to see a graph of it which is what the final line of code does.
 
 Line 7
-This is where we plot the close price against the date. We are using a popular graphics package called ggplot2 and to be honest whole books have been written just about graphing in R with ggplot2 so if you want to know more please consult those or one of the many online tutorials. My brief explanation is that we pass in to ggplot2 our variable holding the data set - stock_aapl. We then specify what ggplot2 calls an an (aes)thetic - basically what we want the x -axis to be, a (geom)etric type i.e a line graph, followed by two final parameters associated with the line graph. Another aesthetic, this time a specification of the y axis and finally what colour we want the line graph to be - red.
-To round off our discussion of R here is a final program showing how we can use it to compute some useful analytics on our downloaded data set of Apple stock prices. We will use the example of calculating the price volatility. You may recall that the volatility of a stock’s price is the annualised standard deviation of its price returns, so let’s write a little R program that calculates this for us.
+This is where we plot the close price against the date. We are using a popular graphics package called ggplot2 and to be honest whole 
+books have been written just about graphing in R with ggplot2 so if you want to know more please consult those or one of the many 
+online tutorials. My brief explanation is that we pass in to ggplot2 our variable holding the data set - stock_aapl. We then specify 
+what ggplot2 calls an an (aes)thetic - basically what we want the x -axis to be, a (geom)etric type i.e a line graph, followed by two 
+final parameters associated with the line graph. Another aesthetic, this time a specification of the y axis and finally what colour we 
+want the line graph to be - red.
+
+To round off our discussion of R here is a final program showing how we can use it to compute some useful analytics on our downloaded 
+data set of Apple stock prices. We will use the example of calculating the price volatility. You may recall that the volatility of a 
+stock’s price is the annualised standard deviation of its price returns, so let’s write a little R program that calculates this for us.
 
 ***listing 5.3***
-
+```
 1   library(Quandl)
 2   stock_aapl <-Quandl("WIKI/AAPL",start_date="2013-01-01",end_date=”2014-01-01”)
 3   aapl_close <- stock_aapl$Close
 4   n <- length(aapl_close)
 5   dly_ret <- log(aapl_close[-n]/aapl_close[-1])
 6   vol <-sd(dly_ret)*sqrt(252)
+```
 
 Line 1
 We make the Quandl data sets available to R
+
 Line 2 
-We fetch 1 years worth of data. Note that we don’t need to specify the API key in this instance as we are using the free WIKI Quandl database.
+We fetch 1 years worth of data. Note that we don’t need to specify the API key in this instance as we are using the free WIKI Quandl 
+database.
+
 Line 3 
-Our fetch in line 2 will get a whole bunch of price related data - not just the close price, so this line stores just the closing  price into a array variable.
+Our fetch in line 2 will get a whole bunch of price related data - not just the close price, so this line stores just the closing  
+price into a array variable.
+
 Line 4
 We store the number of data points we have retrieved.
-Line 5
-We calculate and store the compounded daily price returns. To explain, in R if we have an array of n values x, then x[-n] will return an array of those values minus the last value and x[-1] will return an array of values except the first. So for example let’s say our array of daily returns  x is [1,2,3,4,5].  x[-5] will be [1,2,3,4] and x[-1] will be [2,3,4,5], so x[-5]/x[-1] will result in the array [1/2 , 2/3 , 3/4 , 4/5] which is what we want.
-Line 6
-This is just our calculation of the volatility, sd is the standard deviation of the daily returns and we multiply to get the annualised volatility.
 
-To sum up, although R may not be the most intuitive language to follow, I have hopefully whetted your appetite to encourage you find out more about it. Seven  lines of code to retrieve the price history of a stock and to plot that history on a line graph is pretty impressive.
+Line 5
+We calculate and store the compounded daily price returns. To explain, in R if we have an array x of n values, then x[-n] will return 
+an array of those values minus the last value and x[-1] will return an array of values except the first. So for example let’s say our 
+array of daily returns  x is [1,2,3,4,5].  x[-5] will be [1,2,3,4] and x[-1] will be [2,3,4,5], so x[-5]/x[-1] will result in the array 
+[1/2 , 2/3 , 3/4 , 4/5] which is what we want.
+
+Line 6
+This is just our calculation of the volatility, sd is the standard deviation of the daily returns and we multiply to get the annualised 
+volatility.
+
+To sum up, although R may not be the most intuitive language to follow, I have hopefully whetted your appetite to encourage you to 
+find out more about it. Seven  lines of code to retrieve the price history of a stock and to plot that history on a line 
+graph is pretty impressive in my book.
 
 
 A useful web-site for intra-day historical FOREX tick data
@@ -2087,8 +2121,15 @@ means it's really easy to import it into excel for further analysis.
 Getting data using general web scraping techniques
 --------------------------------------------------
 
-Often you’ll come across a website that shows some useful data on its page that you’d like to grab and import, say, into Excel. Depending on how the particular data is rendered on the web page it’s reasonably straightforward to grab it for yourself. The first thing to check is how the data is rendered on the page. For that you need to examine the page source. On most browsers there is an option to do this. For instance under Chrome and Internet Explorer you simply right click on the web page and take the View Source option that displays in the mini menu that pops up. Now look at the source data and see if you can pick out from that the data you are interested in. If you can then you ought to be able to grab it using VBA. For this example I will consider  a simple test page that I set up on my own web-site. You can see the page by following the link to  www.elmama.co.uk/stock_prices.html. The page is shown below and, as you can see, it’s just a list of ten dummy stocks, showing their name, price, price date and volume of shares traded on the price date.
-
+Often you’ll come across a website that shows some useful data on its page that you’d like to grab and import, say, into Excel. 
+Depending on how the particular data is rendered on the web page it’s reasonably straightforward to grab it for yourself. The first 
+thing to check is how the data is rendered on the page. For that you need to examine the page source. On most browsers there is an 
+option to do this. For instance under Chrome and Internet Explorer you simply right click on the web page and take the View Source 
+option that displays in the mini menu that pops up. Now look at the source data and see if you can pick out from that the data you are 
+interested in. If you can then you ought to be able to grab it using VBA. For this example I will consider  a simple test page that I 
+set up on my own web-site. You can see the page by following the link to  www.elmama.co.uk/stock_prices.html. The page is shown below 
+and, as you can see, it’s just a list of ten dummy stocks, showing their name, price, price date and volume of shares traded on the 
+price date.
 
 
 figure 5.6
@@ -2114,8 +2155,12 @@ So let’s say we wanted to capture this information and display it in Excel. Th
 </table>
 
 
-So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do is, from the string “Stock D” read forward for the next three strings of the form “<td>”. Once you’ve done that you should be at the start of the volume figure and then just keep reading data  up until the next “</td>” string. It sounds a bit more complicated than it actually is. 
-Below is an example of the type of code we would need.
+So, if you wanted to scrape this page for the volume figure associated with the stock called Stock D. Basically what we have to do is 
+search through the source of the web page for the string “Stock D” then do a bit of text manipulation to get at the value we need. 
+There are a number of ways you can get to the volume value from there but, looking at the source code of the web page, what I would do 
+is, from the string “Stock D” read forward for the next three strings of the form “<td>”. Once you’ve done that you should be at the 
+start of the volume figure and then just keep reading data  up until the next “</td>” string. It sounds a bit more complicated than it
+actually is.  Below is an example of the type of code we would need.
 
 ***listing 5.4***
 
@@ -2179,8 +2224,15 @@ Sub getwebdata()
 The only slightly unusual line in the above code is the URL assignment string.
 strURL = "http://www.elmama.co.uk/stock_prices.html?" & Format(Now(), "hhmmss")
 
-The reason we add on the current time in hhmmss format is to ensure that we don’t use a cached (i.e. out-of-date) version of the page. Adding this string on ensures a refreshed, current version of the page is rendered. Normally this wouldn’t be a consideration but obviously in the case of constantly updating stock prices it is! Essentially what this code is doing is using xmlhttp to read into a variable the whole of the source of the web page. We then set up three strings to look for that pinpoint exactly the position on the web source data where the three bits of data we’re looking for are. After that, it’s just some trivial use of a combination of the MID,     INSTR and LEFT text functions to actually get our data. It’s quite easy from here to see how this can be extended to grab other data sets from potentially other web sites that you might want.
+The reason we add on the current time in hhmmss format is to ensure that we don’t use a cached (i.e. out-of-date) version of the page. 
+Adding this string on ensures a refreshed, current version of the page is rendered. Normally this wouldn’t be a consideration but 
+obviously in the case of constantly updating stock prices it is! Essentially what this code is doing is using xmlhttp to read into a 
+variable the whole of the source of the web page. We then set up three strings to look for that pinpoint exactly the position on the 
+web source data where the three bits of data we’re looking for are. After that, it’s just some trivial use of a combination of the MID, 
+INSTR and LEFT text functions to actually get our data. It’s quite easy from here to see how this can be extended to grab other data 
+sets from potentially other web sites that you might want.
 
 ***NB You should note that many web-sites generate the data that you see on their pages “on the fly” as it were using external programming scripts such as JavaScript for instance. The upshot of this is that when you look at the source for the page you will not see actual data but simply calls to scripts which only fetch the data when you open the web-page in a browser. This means it is often tricky if not impossible to use the method described above. For such websites you might want to consider using a product such as iMacros, the Beautiful Soup python library or the web automation tool Selenium.***
 
-                                                The End   
+
+                                                              The End   
