@@ -25,7 +25,7 @@ All brand and product names used in this eBook are trademarks or registered trad
 AUTHOR'S NOTE:
 --------------
 
-As you read this chapter you will see that there are a number of
+As you read this guide you will see that there are a number of
 web-sites mentioned. All were **"alive"** at the time of writing but it
 cannot be guaranteed that they always will be. Although I have never had
 a problem using any of them, feel free to run a virus and/or malware
