@@ -9,4 +9,4 @@ Since publishing this book on Amazon Kindle I have had to remove the contents fr
 
 A link to my book can be found here:
 
-http://www.amazon.com/dp/B07BVXK78H
+https://docs.google.com/document/d/1bT6JyDUwpGTDonBaW_rZUYz-ykPGJzGEyOQxvrLVEbM/edit?usp=sharing
