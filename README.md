@@ -3,7 +3,7 @@ Market Data Downloading
 A quick-start guide to sourcing and downloading financial data from
 Bloomberg, Reuters, Markit and the Internet using **mostly** Excel and VBA
 
-Free copy downloadable in the markdown file in this repository -  it's about 100 pages 
+Free copy available in the PDF document in this repository -  it's about 87 pages 
 
 For about £10 ($15) you can get a paperback copy at Amazon here:
 
